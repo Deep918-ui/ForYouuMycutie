@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page 2</title>
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        overflow:hidden;
+        height:100vh;
+        background:linear-gradient(to bottom,#ffeef5,#ffd6e8);
+        font-family:'Poppins',sans-serif;
+    }
+
+    /* Blossom falling */
+    .blossom{
+        position:fixed;
+        top:-50px;
+        font-size:22px;
+        color:#ff82b2;
+        animation: fall 6s linear infinite;
+        opacity:0.9;
+        filter:blur(0.4px);
+    }
+    @keyframes fall{
+        0%{transform:translateY(-50px) rotate(0deg);}
+        100%{transform:translateY(110vh) rotate(360deg);}
+    }
+
+    /* Center Card */
+    .card{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        width:90%;
+        max-width:450px;
+        text-align:center;
+        padding:35px 20px;
+        background:white;
+        border-radius:25px;
+        box-shadow:0 10px 40px rgba(255,120,160,0.25);
+        animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn{
+        from{opacity:0; transform:translate(-50%, -46%);}
+        to{opacity:1; transform:translate(-50%, -50%);}
+    }
+
+    .text{
+        font-size:20px;
+        color:#ff4f8a;
+        font-weight:600;
+        margin-bottom:25px;
+        line-height:1.5;
+    }
+
+    .btn{
+        padding:12px 28px;
+        border-radius:50px;
+        border:none;
+        margin:10px;
+        font-size:16px;
+        font-weight:600;
+        cursor:pointer;
+        transition:0.2s;
+    }
+
+    .work{
+        background:#ff73a8;
+        color:white;
+        box-shadow:0 6px 18px rgba(255,100,150,0.35);
+    }
+    .work:active{
+        transform:scale(0.96);
+    }
+
+    .not{
+        background:#f5b5cb;
+        color:#7a4a5e;
+    }
+
+    /* Shake + Blast Animation */
+    @keyframes shake{
+        0%,100%{transform:translateX(0);}
+        20%{transform:translateX(-6px);}
+        40%{transform:translateX(6px);}
+        60%{transform:translateX(-6px);}
+        80%{transform:translateX(6px);}
+    }
+
+    @keyframes blast{
+        0%{opacity:1; transform:scale(1);}
+        100%{opacity:0; transform:scale(2);}
+    }
+</style>
+</head>
+<body>
+
+<!-- Blossom Generator -->
+<script>
+function spawnBlossom(){
+    const b = document.createElement("div");
+    b.className = "blossom";
+    b.innerHTML = "🌸";
+    b.style.left = Math.random()*100 + "vw";
+    b.style.animationDuration = (5 + Math.random()*4) + "s";
+    document.body.appendChild(b);
+    setTimeout(()=> b.remove(), 7000);
+}
+setInterval(spawnBlossom, 300);
+</script>
+
+<!-- Main Card -->
+<div class="card">
+    <div class="text">
+        i am so happy tujhe aj ka din yaad hai 
+        wese or kitna din wait karna hoga? tere liye   
+    </div>
+
+    <button class="btn work" onclick="location.href='page3.html'">sorry aur nehi karwangi</button>
+
+    <button class="btn not" id="notBtn">Aur jada kar wait 😒</button>
+</div>
+
+<!-- Not Workable Script -->
+<script>
+document.getElementById("notBtn").onclick = function(){
+    this.style.animation = "shake 0.4s";
+    setTimeout(()=>{
+        this.style.animation = "blast 0.5s forwards";
+    },400);
+};
+</script>
+
+</body>
+</html>

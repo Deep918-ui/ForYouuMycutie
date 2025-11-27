@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Surprise Letter</title>
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        background:#ffeef8;
+        font-family: "Poppins", sans-serif;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .wrapper{
+        width:90%;
+        max-width:700px;
+        background:white;
+        padding:25px;
+        border-radius:14px;
+        box-shadow:0 0 40px rgba(0,0,0,0.15);
+        overflow-y:auto;
+        height:85vh;
+    }
+
+    #textBox{
+        white-space:pre-line;
+        font-size:16px;
+        color:#ff7ad9;
+        line-height:1.6;
+    }
+
+    .mubarak{
+        font-weight:700;
+        color:#7a00aa;
+        text-shadow:0 0 12px #d97bff;
+        display:block;
+        margin-top:18px;
+    }
+
+    .play-btn{
+        width:100%;
+        padding:14px;
+        background:#ff4fa3;
+        border:none;
+        border-radius:10px;
+        color:white;
+        font-size:17px;
+        font-weight:600;
+        cursor:pointer;
+        margin-bottom:18px;
+        box-shadow:0 4px 15px rgba(255,0,120,0.3);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <button class="play-btn" id="playSongBtn">Tap to See a Surprise 💗</button>
+
+    <audio id="bgSong">
+        <source src="https://raw.githubusercontent.com/Deep918-ui/ForYouuMycutie/ec2cfef70e55419fb978ce099cc5be4e60b5ee31/IsHq_mUbaRak__Sped_Up__%E2%9D%A4%EF%B8%8F%E2%80%8D%F0%9F%A9%B9_%23sad_%23love_%23trendingshorts_%23bestclip_%23edit_%23viralvideo(480p).mp4" type="audio/mp4">
+    </audio>
+
+    <div id="textBox"></div>
+
+</div>
+
+<script>
+const textBox = document.getElementById("textBox");
+const btn = document.getElementById("playSongBtn");
+const song = document.getElementById("bgSong");
+
+// ✨ FULL LETTER WITHOUT ISHQ MUBARAK
+const mainText = `I’m writing this for the last time, not to convince you of anything, but to say what I should have said earlier with a clear mind. I know you already have someone in your life, and I genuinely respect that. I also know I’ve disturbed you more than I should have, and that’s on me. I don’t want to be another source of stress for you, and I’m not going to pretend I wasn’t annoying sometimes — I was.
+
+But even through all of that, one thing is absolutely true: I’m proud of you. Proud that you stayed loyal, proud that you stood by your partner, and proud that you didn’t compromise your relationship for anyone. That says a lot about the kind of person you are, and it’s exactly why you deserve happiness without distractions.
+
+From today, this annoying guy steps out of your way for good. I won’t disturb you again. I want you to grow, to smile, and to live your life peacefully with the choices you believe in. You deserve that, and I genuinely mean it.
+
+Wish you all the best for everything ahead — may your future be bright, calm, and filled with the happiness you choose.
+
+`;
+
+const lastLine = `<span class="mubarak">ISHQ MUBARAK!!!😌💗</span>`;
+
+btn.addEventListener("click", () => {
+    btn.style.display = "none";
+    song.play()
+
+    let i = 0;
+    textBox.textContent = "";
+
+    function typeWriter(){
+        if(i < mainText.length){
+            textBox.textContent += mainText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 30); // FAST WRITING
+        } else {
+            // inject HTML last line safely
+            textBox.innerHTML += lastLine;
+        }
+    }
+
+    typeWriter();
+});
+</script>
+
+</body>
+</html>
